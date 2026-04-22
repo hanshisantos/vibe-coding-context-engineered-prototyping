@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this workshop material, please cite it as below."
+title: "Vibe Coding: A Practical Guide to Context-Engineered Prototyping"
+type: dataset
+authors:
+  - family-names: Martinez
+    given-names: Santos
+    orcid: "https://orcid.org/0009-0001-5997-303X"
+date-released: "2026-04-22"
+url: "https://github.com/hanshisantos/vibe-coding-context-engineered-prototyping"
+repository-code: "https://github.com/hanshisantos/vibe-coding-context-engineered-prototyping"
+license: MIT
+abstract: >-
+  A 60-minute hands-on workshop introducing students to Vibe Coding,
+  a practical method for designing AI interactions that preserve
+  cultural, emotional, and experiential context. Covers the VIBE Loop
+  (Value, Intent, Boundaries, Expression), rapid prototyping techniques,
+  and essential considerations for security and responsible AI.
+keywords:
+  - vibe-coding
+  - context-engineering
+  - prompt-engineering
+  - responsible-ai
+  - workshop
+  - prototyping
