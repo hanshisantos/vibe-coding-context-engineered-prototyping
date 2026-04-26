@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vibe Coding: Context-Engineered Prototyping</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+<style>
+  :root {
+    --vc-dark: #000000;
+    --vc-navy: #0a0a0a;
+    --vc-accent: #FFC904;
+    --vc-gold: #FFC904;
+    --vc-text: #f0f0f0;
+    --vc-muted: #b0b0b0;
+    --vc-code-bg: #111111;
+  }
+  .reveal { font-family: 'Segoe UI', system-ui, sans-serif; color: var(--vc-text); }
+  .reveal .slides { text-align: left; }
+  .reveal section { padding: 12px 40px 12px 40px; box-sizing: border-box; }
+  .reveal h1 { color: #fff; font-size: 1.7em; margin-bottom: 0.3em; line-height: 1.2; }
+  .reveal h2 { color: var(--vc-gold); font-size: 1.25em; margin-bottom: 0.3em; line-height: 1.2; }
+  .reveal h3 { color: var(--vc-accent); font-size: 1.05em; margin-bottom: 0.2em; }
+  .reveal p { font-size: 0.78em; line-height: 1.45; margin: 0.3em 0; }
+  .reveal ul, .reveal ol { font-size: 0.78em; line-height: 1.45; margin: 0.3em 0; }
+  .reveal li { margin-bottom: 0.2em; }
+  .reveal strong { color: var(--vc-gold); }
+  .reveal em { color: var(--vc-accent); }
+  .reveal blockquote { border-left: 4px solid var(--vc-accent); padding: 8px 16px; margin: 10px 0; font-style: italic; font-size: 0.82em; background: rgba(255,201,4,0.08); }
+  .reveal table { width: 100%; border-collapse: collapse; font-size: 0.7em; margin: 8px 0; }
+  .reveal th { background: var(--vc-accent); color: #000; padding: 6px 10px; text-align: left; font-weight: 600; }
+  .reveal td { padding: 5px 10px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .reveal tr:nth-child(even) td { background: rgba(255,255,255,0.03); }
+  .reveal pre { background: var(--vc-code-bg); border: 1px solid rgba(255,201,4,0.3); border-radius: 6px; padding: 10px 14px; margin: 8px 0; }
+  .reveal code { font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace; font-size: 0.72em; line-height: 1.4; }
+  .reveal a { color: var(--vc-gold); text-decoration: underline; }
+
+  .section-divider { text-align: center !important; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; }
+  .section-divider h1 { font-size: 2.2em; color: #fff; }
+  .section-divider h3 { color: var(--vc-muted); font-size: 1em; margin-top: 0.4em; }
+
+  .highlight-box { background: rgba(255,201,4,0.1); border-left: 4px solid var(--vc-accent); padding: 10px 16px; border-radius: 4px; margin: 8px 0; font-size: 0.78em; }
+
+  .checklist { list-style: none; padding-left: 0; }
+  .checklist li::before { content: "☐ "; color: var(--vc-gold); }
+
+  .prereq-table { width: 80%; margin: 0 auto; }
+  .prereq-table td { padding: 8px 14px; font-size: 0.82em; }
+  .prereq-table td:first-child { font-size: 1.3em; text-align: center; width: 50px; }
+
+  #timer-display { font-size: 2.8em; color: var(--vc-gold); font-weight: 700; text-align: center; margin: 12px 0; font-family: 'Cascadia Code', monospace; }
+  #welcome-msg { font-size: 1.4em; color: #fff; font-weight: 700; text-align: center; display: none; margin-top: 8px; }
+  .prereq-note { text-align: center; font-size: 0.75em; color: var(--vc-muted); margin-top: 6px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .footer-info { font-size: 0.6em; color: var(--vc-muted); text-align: center; margin-top: 12px; }
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- ========== SLIDE 0: PREREQUISITES + TIMER ========== -->
+<section>
+  <h1 style="text-align:center;">📋 Workshop Prerequisites</h1>
+  <h3 style="text-align:center; color:var(--vc-muted);">Please have the following ready before we begin</h3>
+  <table class="prereq-table">
+    <tr><td>💻</td><td><strong>Laptop</strong> with a modern browser (Chrome, Edge, Firefox)</td></tr>
+    <tr><td>📝</td><td><strong>Text Editor</strong> (VS Code recommended)</td></tr>
+    <tr><td>🤖</td><td><strong>AI Tool Access</strong> (optional: ChatGPT, Copilot, Claude, Gemini)</td></tr>
+    <tr><td>🔗</td><td><strong>Workshop Repository:</strong> <a href="https://github.com/hanshisantos/vibe-coding-context-engineered-prototyping" target="_blank">github.com/hanshisantos/vibe-coding-context-engineered-prototyping</a></td></tr>
+  </table>
+  <p style="text-align:center; font-size:0.85em; color:var(--vc-muted); margin-top:14px;">We will begin in:</p>
+  <div id="timer-display">05:00</div>
+  <div id="welcome-msg">🎤 Please Welcome Our Speaker</div>
+  <p class="prereq-note">Vibe Coding: Context-Engineered Prototyping | University of Central Florida | April 27, 2026</p>
+</section>
+
+<!-- ========== SLIDE 1: TITLE ========== -->
+<section>
+  <div class="section-divider">
+    <h1>Vibe Coding</h1>
+    <h2 style="color:var(--vc-text); font-size:1.1em;">A Practical Guide to Context-Engineered Prototyping</h2>
+    <p style="font-size:0.9em; margin-top:20px;"><strong>Santos Martinez</strong></p>
+    <p style="font-size:0.75em; color:var(--vc-muted);">Principal Product Manager Architect, Microsoft CXE</p>
+    <p style="font-size:0.7em; color:var(--vc-muted);">University of Central Florida | April 27, 2026</p>
+  </div>
+</section>
+
+<!-- ========== SLIDE 2: AGENDA ========== -->
+<section>
+  <h1>What We Will Cover Today</h1>
+  <ol>
+    <li>Why context matters in AI interactions</li>
+    <li>The <strong>VIBE Loop</strong> framework</li>
+    <li>Hands-on: Define your vibe</li>
+    <li>Live demo: Transform a prompt with context engineering</li>
+    <li>Hands-on: Build your own context-engineered prompt</li>
+    <li>Security and responsible AI guardrails</li>
+    <li>Rapid prototyping demo</li>
+    <li>Q&amp;A</li>
+  </ol>
+</section>
+
+<!-- ========== SLIDE 3: THE PROBLEM ========== -->
+<section>
+  <h1>The Problem: Context Gets Lost</h1>
+  <p>When we interact with AI, we lose something critical:</p>
+  <ul>
+    <li><strong>Cultural identity</strong> gets flattened into generic responses</li>
+    <li><strong>Emotional tone</strong> gets replaced with corporate neutrality</li>
+    <li><strong>Experiential knowledge</strong> gets ignored for textbook answers</li>
+    <li><strong>Intent</strong> gets misread because we never stated it</li>
+  </ul>
+  <div class="highlight-box">The result? AI outputs that are technically correct but contextually wrong.</div>
+</section>
+
+<!-- ========== SLIDE 4: WHAT IS VIBE CODING ========== -->
+<section>
+  <h1>What Is Vibe Coding?</h1>
+  <p>The term <strong>vibe coding</strong> was coined by Andrej Karpathy in February 2025, describing a style where developers "fully give in to the vibes, embrace exponentials, and forget that the code even exists" (Karpathy, 2025).</p>
+  <p>In this workshop, we extend the concept: <strong>Vibe Coding</strong> is the practice of designing AI interactions that preserve the cultural, emotional, and experiential context of the person behind the prompt.</p>
+  <p>It is not about writing longer prompts. It is about writing <em>intentional</em> prompts.</p>
+  <blockquote>"The vibe is the context that numbers cannot capture." — Santos Martinez</blockquote>
+</section>
+
+<!-- ========== SLIDE 5: WHY DOES THIS MATTER ========== -->
+<section>
+  <h1>Why Does This Matter?</h1>
+  <table>
+    <tr><th>Without Context Engineering</th><th>With Context Engineering</th></tr>
+    <tr><td>Generic, one-size-fits-all outputs</td><td>Responses aligned with your identity</td></tr>
+    <tr><td>Misunderstood intent</td><td>Clear, purpose-driven interactions</td></tr>
+    <tr><td>Unsafe or biased patterns</td><td>Built-in guardrails from the start</td></tr>
+    <tr><td>Throwaway prototypes</td><td>Reusable interaction patterns</td></tr>
+  </table>
+</section>
+
+<!-- ========== SLIDE 6: REAL-WORLD EXAMPLE ========== -->
+<section>
+  <h1>Real-World Example</h1>
+  <div class="two-col">
+    <div>
+      <h3>Naive prompt:</h3>
+      <blockquote>"Write me a business email."</blockquote>
+    </div>
+    <div>
+      <h3>Context-engineered prompt:</h3>
+      <blockquote>"I am a senior technical leader writing to a cross-functional team after a missed deadline. My communication style is direct but respectful. The team is demoralized. I need to acknowledge the miss, redirect focus to next steps, and restore confidence without assigning blame."</blockquote>
+    </div>
+  </div>
+  <div class="highlight-box">Same task. Completely different output.</div>
+</section>
+
+<!-- ========== SLIDE 7: VIBE LOOP DIVIDER ========== -->
+<section>
+  <div class="section-divider">
+    <h1>The VIBE Loop</h1>
+  </div>
+</section>
+
+<!-- ========== SLIDE 8: VIBE LOOP FRAMEWORK ========== -->
+<section>
+  <h1>The VIBE Loop Framework</h1>
+  <p>A repeatable process for engineering context into every AI interaction.</p>
+  <table>
+    <tr><th>Letter</th><th>Element</th><th>Question to Ask</th></tr>
+    <tr><td><strong>V</strong></td><td>Value</td><td>What matters most in this interaction?</td></tr>
+    <tr><td><strong>I</strong></td><td>Intent</td><td>What outcome am I trying to achieve?</td></tr>
+    <tr><td><strong>B</strong></td><td>Boundaries</td><td>What should the AI <em>not</em> do?</td></tr>
+    <tr><td><strong>E</strong></td><td>Expression</td><td>How should the response sound and feel?</td></tr>
+  </table>
+</section>
+
+<!-- ========== SLIDE 9: V — VALUE ========== -->
+<section>
+  <h1>V — Value</h1>
+  <h2>What matters most in this interaction?</h2>
+  <p>This is about <em>priorities</em>, not features.</p>
+  <ul>
+    <li>"Accuracy matters more than speed"</li>
+    <li>"Cultural sensitivity is non-negotiable"</li>
+    <li>"Preserving the original author's voice is the priority"</li>
+  </ul>
+  <div class="highlight-box"><strong>Exercise question:</strong> What is the one thing that, if the AI gets wrong, makes the entire output useless?</div>
+</section>
+
+<!-- ========== SLIDE 10: I — INTENT ========== -->
+<section>
+  <h1>I — Intent</h1>
+  <h2>What outcome am I trying to achieve?</h2>
+  <p>Be specific. "Help me write" is not an intent.</p>
+  <ul>
+    <li>"Persuade a skeptical executive to fund this project"</li>
+    <li>"Teach a junior engineer this concept without jargon"</li>
+    <li>"Draft a response that de-escalates a frustrated customer"</li>
+  </ul>
+  <div class="highlight-box"><strong>Exercise question:</strong> If the AI succeeds perfectly, what changes in the real world?</div>
+</section>
+
+<!-- ========== SLIDE 11: B — BOUNDARIES ========== -->
+<section>
+  <h1>B — Boundaries</h1>
+  <h2>What should the AI not do?</h2>
+  <p>Boundaries are your safety net. They prevent:</p>
+  <ul>
+    <li>Hallucinated data presented as fact</li>
+    <li>Tone-deaf or culturally inappropriate responses</li>
+    <li>Scope creep beyond the task</li>
+    <li>Security and privacy violations</li>
+  </ul>
+  <p>Examples:</p>
+  <ul>
+    <li>"Do not fabricate statistics or citations"</li>
+    <li>"Do not use casual language in this legal context"</li>
+    <li>"Do not include PII or internal project names"</li>
+  </ul>
+</section>
+
+<!-- ========== SLIDE 12: E — EXPRESSION ========== -->
+<section>
+  <h1>E — Expression</h1>
+  <h2>How should the response sound and feel?</h2>
+  <p>This is where the <em>vibe</em> lives.</p>
+  <ul>
+    <li>"Conversational but authoritative, like a trusted mentor"</li>
+    <li>"Technical and precise, written for a peer reviewer"</li>
+    <li>"Warm and encouraging, written for first-generation college students"</li>
+  </ul>
+  <div class="highlight-box"><strong>Exercise question:</strong> If you read this output aloud, would it sound like <em>you</em>?</div>
+</section>
+
+<!-- ========== SLIDE 13: EXERCISE 1 DIVIDER ========== -->
+<section>
+  <div class="section-divider">
+    <h1>Exercise 1: Define Your Vibe</h1>
+    <h3>6 minutes</h3>
+  </div>
+</section>
+
+<!-- ========== SLIDE 14: EXERCISE 1 INSTRUCTIONS ========== -->
+<section>
+  <h1>Exercise 1: Define Your Vibe</h1>
+  <p>Open <code>exercises/01-define-your-vibe/vibe-worksheet.md</code></p>
+  <p><strong>Instructions:</strong></p>
+  <ol>
+    <li>Pick a task you actually need AI help with this week</li>
+    <li>Fill in each section of the VIBE worksheet</li>
+    <li>Do not overthink it. First instinct is fine.</li>
+  </ol>
+  <table>
+    <tr><th>Element</th><th>Your Answer</th></tr>
+    <tr><td><strong>V</strong> — Value</td><td>What matters most?</td></tr>
+    <tr><td><strong>I</strong> — Intent</td><td>What real-world outcome?</td></tr>
+    <tr><td><strong>B</strong> — Boundaries</td><td>What must the AI avoid?</td></tr>
+    <tr><td><strong>E</strong> — Expression</td><td>How should it sound?</td></tr>
+  </table>
+</section>
+
+<!-- ========== SLIDE 15: LIVE DEMO DIVIDER ========== -->
+<section>
+  <div class="section-divider">
+    <h1>Live Demo</h1>
+    <h3>From VIBE to Context-Engineered Prompt</h3>
+  </div>
+</section>
+
+<!-- ========== SLIDE 16: DEMO THE TRANSFORMATION ========== -->
+<section>
+  <h1>Demo: The Transformation</h1>
+  <p>We will take a real task and walk through:</p>
+  <ol>
+    <li><strong>Start with a naive prompt</strong> (what most people write)</li>
+    <li><strong>Apply the VIBE Loop</strong> (ask the four questions)</li>
+    <li><strong>Build the context-engineered prompt</strong> (structured, intentional)</li>
+    <li><strong>Compare the outputs</strong> (side by side)</li>
+    <li><strong>Add guardrails</strong> (security and responsible AI boundaries)</li>
+  </ol>
+  <p>Watch how each VIBE element changes the AI's behavior.</p>
+</section>
+
+<!-- ========== SLIDE 17: DEMO NAIVE PROMPT ========== -->
+<section>
+  <h1>Demo: Naive Prompt</h1>
+  <pre><code>Summarize this quarterly report for my team.</code></pre>
+  <div class="two-col">
+    <div>
+      <h3>What could go wrong:</h3>
+      <ul>
+        <li>Wrong audience level</li>
+        <li>Wrong tone</li>
+        <li>Key details omitted</li>
+        <li>Sensitive data exposed</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="color:var(--vc-muted);">Simulated AI Output:</h3>
+      <div style="background:var(--vc-code-bg); border:1px solid rgba(255,201,4,0.2); border-radius:6px; padding:8px 12px; font-size:0.7em; line-height:1.4;">
+        <p style="margin:0;"><em>"Q2 revenue reached $23.2M, up 18% YoY. Customer churn decreased to 4.1%. The board approved the Series C at a $340M valuation. Key accounts include Acme Corp and GlobalTech..."</em></p>
+      </div>
+      <p style="font-size:0.65em; color:#ff6b6b;">⚠ Revenue figures, valuation, and customer names exposed. Tone is executive-level, not team-level.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SLIDE 18: DEMO AFTER VIBE LOOP ========== -->
+<section>
+  <h1>Demo: After the VIBE Loop</h1>
+  <div class="two-col">
+    <div>
+      <pre style="font-size:0.62em;"><code>You are helping a senior PM summarize a quarterly
+report for a cross-functional team of engineers
+and designers.
+
+Value: Highlight decisions that affect the next
+       sprint. Accuracy over completeness.
+
+Intent: The team should leave knowing exactly
+        what changed and what they need to do next.
+
+Boundaries: Do not include revenue figures or
+            customer names. Do not speculate.
+
+Expression: Direct and concise. Bullet points.
+            Collaborative, not executive.</code></pre>
+    </div>
+    <div>
+      <h3 style="color:var(--vc-muted);">Simulated AI Output:</h3>
+      <div style="background:var(--vc-code-bg); border:1px solid rgba(255,201,4,0.2); border-radius:6px; padding:8px 12px; font-size:0.65em; line-height:1.4;">
+        <p style="margin:0 0 4px 0;"><strong style="color:var(--vc-gold);">Q2 Sprint Impact Summary</strong></p>
+        <p style="margin:0;">• <strong>Auth migration</strong> completed — all endpoints on OAuth 2.0<br>
+        • <strong>Dashboard redesign</strong> ships next sprint; design review Wednesday<br>
+        • <strong>API rate limits</strong> tightened; update your integration tests<br>
+        • <strong>Hiring</strong>: 2 new engineers onboarding in June</p>
+        <p style="margin:4px 0 0 0; font-size:0.9em; color:var(--vc-muted);"><em>No revenue or customer data included.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SLIDE 19: DEMO OUTPUT DIFFERENCE ========== -->
+<section>
+  <h1>Demo: The Output Difference</h1>
+  <table>
+    <tr><th style="width:50%;">Naive Prompt Output</th><th>Context-Engineered Output</th></tr>
+    <tr><td>"Q2 revenue reached $23.2M, up 18% YoY..."</td><td>"Auth migration completed — all endpoints on OAuth 2.0"</td></tr>
+    <tr><td>Includes sensitive revenue data ⚠</td><td>Revenue figures excluded ✓</td></tr>
+    <tr><td>Names key accounts by name ⚠</td><td>No customer data included ✓</td></tr>
+    <tr><td>Formal corporate tone</td><td>Collaborative team tone</td></tr>
+    <tr><td>Buries actionable items in prose</td><td>Leads with what changed and next steps</td></tr>
+  </table>
+  <div class="highlight-box">The prompt did not get longer for the sake of length. Every line serves a purpose.</div>
+</section>
+
+<!-- ========== SLIDE 20: EXERCISE 2 DIVIDER ========== -->
+<section>
+  <div class="section-divider">
+    <h1>Exercise 2: Build Your Prompt</h1>
+    <h3>12 minutes</h3>
+  </div>
+</section>
+
+<!-- ========== SLIDE 21: EXERCISE 2 INSTRUCTIONS ========== -->
+<section>
+  <h1>Exercise 2: Build Your Context-Engineered Prompt</h1>
+  <p>Open <code>exercises/02-build-your-prompt/</code></p>
+  <p><strong>Instructions:</strong></p>
+  <ol>
+    <li>Start with the naive prompt in <code>before-prompt.md</code></li>
+    <li>Apply your VIBE Loop answers from Exercise 1</li>
+    <li>Write your context-engineered prompt in <code>after-prompt.md</code></li>
+    <li>If you have access to an AI tool, test both prompts and compare</li>
+  </ol>
+  <p><strong>Checklist:</strong></p>
+  <ul class="checklist">
+    <li>Value is stated explicitly</li>
+    <li>Intent describes a real-world outcome</li>
+    <li>At least one boundary is defined</li>
+    <li>Expression matches your authentic voice</li>
+  </ul>
+</section>
+
+<!-- ========== SLIDE 22: SECURITY DIVIDER ========== -->
+<section>
+  <div class="section-divider">
+    <h1>Security and Responsible AI</h1>
+  </div>
+</section>
+
+<!-- ========== SLIDE 23: GUARDRAILS ========== -->
+<section>
+  <h1>Guardrails Are Not Optional</h1>
+  <p>Context engineering includes knowing what to <em>exclude</em>.</p>
+  <div class="two-col">
+    <div>
+      <h3>Security considerations:</h3>
+      <ul>
+        <li>Never embed credentials, API keys, or tokens in prompts</li>
+        <li>Avoid including PII in shared prompts</li>
+        <li>Treat prompt templates like code: review, version, protect</li>
+      </ul>
+      <p style="font-size:0.65em; color:var(--vc-muted);">See OWASP Top 10 for LLM Applications (OWASP, 2025)</p>
+    </div>
+    <div>
+      <h3>Responsible AI considerations:</h3>
+      <ul>
+        <li>State boundaries explicitly; do not assume the model knows your limits</li>
+        <li>Test for bias: does the output change unfairly based on cultural markers?</li>
+        <li>Verify factual claims; context engineering does not prevent hallucination (Microsoft, 2022)</li>
+      </ul>
+      <p style="font-size:0.65em; color:var(--vc-muted);">See Microsoft Responsible AI Standard v2 (Microsoft, 2022)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SLIDE 24: GUARDRAIL LAYER ========== -->
+<section>
+  <h1>The Guardrail Layer</h1>
+  <p>Add this to any context-engineered prompt:</p>
+  <pre><code>Safety and Boundaries:
+- Do not fabricate data, citations, or statistics.
+- Do not include personally identifiable information.
+- If uncertain, state the uncertainty explicitly.
+- Flag any content that could be interpreted as biased
+  or culturally insensitive.
+- This prompt and its outputs should not be shared
+  outside [defined audience].</code></pre>
+  <div class="highlight-box">This is your <strong>minimum viable guardrail</strong>. Customize per use case.</div>
+</section>
+
+<!-- ========== SLIDE 25: RAPID PROTOTYPING DIVIDER ========== -->
+<section>
+  <div class="section-divider">
+    <h1>Rapid Prototyping Demo</h1>
+  </div>
+</section>
+
+<!-- ========== SLIDE 26: FROM PROMPT TO PROTOTYPE ========== -->
+<section>
+  <h1>From Prompt to Prototype in Minutes</h1>
+  <p>Context-engineered prompts become reusable artifacts:</p>
+  <ol>
+    <li><strong>Prompt Template</strong> — Parameterized VIBE-structured prompt</li>
+    <li><strong>Interaction Pattern</strong> — Multi-turn conversation design</li>
+    <li><strong>Lightweight Prototype</strong> — Working demo with guardrails</li>
+  </ol>
+  <pre><code>Template: Customer Onboarding Assistant
+Parameters: {product_name}, {audience_level}, {tone}
+VIBE:
+  V: New users complete setup without support tickets
+  I: Guide through first 3 steps with zero jargon
+  B: No upselling, no feature comparisons
+  E: Patient, encouraging, like a helpful colleague</code></pre>
+</section>
+
+<!-- ========== SLIDE 27: PROTOTYPE VS SHIP ========== -->
+<section>
+  <h1>When to Prototype vs. When to Ship</h1>
+  <table>
+    <tr><th>Prototype</th><th>Production</th></tr>
+    <tr><td>Test the VIBE alignment</td><td>Harden the guardrails</td></tr>
+    <tr><td>Validate with 3-5 users</td><td>Monitor for drift</td></tr>
+    <tr><td>Iterate on expression</td><td>Add logging and feedback loops</td></tr>
+    <tr><td>Break things safely</td><td>Version and audit prompts</td></tr>
+  </table>
+  <div class="highlight-box"><strong>Rule of thumb:</strong> If you cannot explain the VIBE Loop for your prompt, it is not ready for production.</div>
+</section>
+
+<!-- ========== SLIDE 28: EXERCISE 3 ========== -->
+<section>
+  <h1>Take-Home: Exercise 3</h1>
+  <p>Open <code>exercises/03-rapid-prototype/</code></p>
+  <p>Build a prototype prompt template for one of these scenarios:</p>
+  <ul>
+    <li>A study buddy that matches your learning style</li>
+    <li>A code reviewer that respects your team's conventions</li>
+    <li>A writing assistant that preserves your cultural voice</li>
+  </ul>
+  <p>Use the template provided. Apply the full VIBE Loop.</p>
+</section>
+
+<!-- ========== SLIDE 29: WRAP-UP DIVIDER ========== -->
+<section>
+  <div class="section-divider">
+    <h1>Wrap-Up</h1>
+  </div>
+</section>
+
+<!-- ========== SLIDE 30: WHAT YOU LEARNED ========== -->
+<section>
+  <h1>What You Learned Today</h1>
+  <ol>
+    <li><strong>Vibe Coding</strong> — designing AI interactions that preserve context</li>
+    <li><strong>The VIBE Loop</strong> — Value, Intent, Boundaries, Expression</li>
+    <li><strong>Context engineering</strong> — structured prompts that align AI with human intent</li>
+    <li><strong>Guardrails</strong> — security and responsible AI are part of the design, not an afterthought</li>
+    <li><strong>Rapid prototyping</strong> — turning prompts into reusable, testable artifacts</li>
+  </ol>
+</section>
+
+<!-- ========== SLIDE 31: NEXT STEPS ========== -->
+<section>
+  <h1>Your Next Steps</h1>
+  <ul class="checklist">
+    <li>Apply the VIBE Loop to one real task this week</li>
+    <li>Share your prompt template with a colleague and get feedback</li>
+    <li>Add guardrails to every prompt you write from now on</li>
+    <li>Complete Exercise 3 (rapid prototype) on your own time</li>
+    <li>Explore the resources in the <code>resources/</code> folder</li>
+  </ul>
+  <p style="margin-top:14px;"><strong>Repository:</strong> <a href="https://github.com/hanshisantos/vibe-coding-context-engineered-prototyping" target="_blank">github.com/hanshisantos/vibe-coding-context-engineered-prototyping</a></p>
+</section>
+
+<!-- ========== SLIDE: REFERENCES ========== -->
+<section>
+  <h1>References</h1>
+  <p style="font-size:0.68em; line-height:1.6; margin:6px 0;">
+    Karpathy, A. [@karpathy]. (2025, February 2). <em>There's a new kind of coding I call "vibe coding"</em> [Post]. X. <a href="https://x.com/karpathy/status/1886192184808149383" target="_blank">https://x.com/karpathy/status/1886192184808149383</a>
+  </p>
+  <p style="font-size:0.68em; line-height:1.6; margin:6px 0;">
+    Martinez, S. (2026). <em>Vibe coding: A practical guide to context-engineered prototyping</em> [Workshop materials]. GitHub. <a href="https://github.com/hanshisantos/vibe-coding-context-engineered-prototyping" target="_blank">https://github.com/hanshisantos/vibe-coding-context-engineered-prototyping</a>
+  </p>
+  <p style="font-size:0.68em; line-height:1.6; margin:6px 0;">
+    Microsoft. (2022). <em>Microsoft Responsible AI Standard, v2</em>. <a href="https://blogs.microsoft.com/wp-content/uploads/prod/sites/5/2022/06/Microsoft-Responsible-AI-Standard-v2-General-Requirements-3.pdf" target="_blank">https://blogs.microsoft.com/wp-content/uploads/prod/sites/5/2022/06/Microsoft-Responsible-AI-Standard-v2-General-Requirements-3.pdf</a>
+  </p>
+  <p style="font-size:0.68em; line-height:1.6; margin:6px 0;">
+    OWASP. (2025). <em>OWASP Top 10 for Large Language Model Applications</em>. <a href="https://genai.owasp.org/llm-top-10/" target="_blank">https://genai.owasp.org/llm-top-10/</a>
+  </p>
+</section>
+
+<!-- ========== SLIDE 32: Q&A ========== -->
+<section>
+  <div class="section-divider">
+    <h1>Q&amp;A</h1>
+    <h3>10 Minutes</h3>
+    <p style="font-size:0.9em; color:var(--vc-muted); margin-top:20px;">What questions do you have?</p>
+  </div>
+</section>
+
+<!-- ========== SLIDE 33: THANK YOU ========== -->
+<section>
+  <div class="section-divider">
+    <h1>Thank You</h1>
+    <p style="font-size:0.95em; margin-top:16px;"><strong>Santos Martinez</strong></p>
+    <p style="font-size:0.8em; color:var(--vc-muted);">Principal Product Manager Architect, Microsoft CXE</p>
+    <p style="font-size:0.75em; margin-top:12px;">📦 <a href="https://github.com/hanshisantos/vibe-coding-context-engineered-prototyping" target="_blank">github.com/hanshisantos/vibe-coding-context-engineered-prototyping</a></p>
+    <p style="font-size:0.75em;">🔗 @hanshisantos</p>
+    <blockquote style="margin-top:16px;">"The best AI interactions start with knowing what matters to you."</blockquote>
+    <p class="footer-info">Martinez, S. (2026). <em>Vibe coding: A practical guide to context-engineered prototyping</em> [Workshop materials]. GitHub. https://github.com/hanshisantos/vibe-coding-context-engineered-prototyping</p>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  width: 1280,
+  height: 720,
+  margin: 0.08,
+  center: false,
+  transition: 'slide',
+  backgroundTransition: 'fade'
+});
+
+// Countdown Timer (5 minutes)
+(function() {
+  var totalSeconds = 300;
+  var timerEl = document.getElementById('timer-display');
+  var welcomeEl = document.getElementById('welcome-msg');
+  if (!timerEl) return;
+  var interval = setInterval(function() {
+    totalSeconds--;
+    if (totalSeconds <= 0) {
+      clearInterval(interval);
+      timerEl.textContent = '00:00';
+      if (welcomeEl) welcomeEl.style.display = 'block';
+      return;
+    }
+    var m = Math.floor(totalSeconds / 60);
+    var s = totalSeconds % 60;
+    timerEl.textContent = (m < 10 ? '0' + m : m) + ':' + (s < 10 ? '0' + s : s);
+  }, 1000);
+})();
+</script>
+</body>
+</html>
