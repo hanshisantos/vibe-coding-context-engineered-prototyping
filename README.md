@@ -1,5 +1,6 @@
 # Vibe Coding: A Practical Guide to Context-Engineered Prototyping
 [![DOI](https://zenodo.org/badge/1218169759.svg)](https://doi.org/10.5281/zenodo.22726916)
+
 This 60-minute session introduces students to Vibe Coding, a practical method for designing AI interactions that preserve cultural, emotional, and experiential context. Participants will learn how to translate "vibes" into structured prompts, interaction patterns, and lightweight prototypes that align AI behavior with human intent.
 
 Through live demonstrations and hands-on examples, the session covers the VIBE Loop (Value, Intent, Boundaries, Expression), rapid prototyping techniques, and essential considerations for security and responsible AI. Students will leave with actionable strategies they can apply immediately in their own projects, followed by a 10-minute Q&A to explore real-world applications.
