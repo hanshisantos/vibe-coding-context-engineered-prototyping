@@ -1,25 +1,29 @@
 cff-version: 1.2.0
-message: "If you use this workshop material, please cite it as below."
+message: "If you use this work or the VIBE Loop framework, please cite it as below."
 title: "Vibe Coding: A Practical Guide to Context-Engineered Prototyping"
-type: dataset
-authors:
-  - family-names: Martinez
-    given-names: Santos
-    orcid: "https://orcid.org/0009-0001-5997-303X"
-date-released: "2026-04-27"
-url: "https://github.com/hanshisantos/vibe-coding-context-engineered-prototyping"
-repository-code: "https://github.com/hanshisantos/vibe-coding-context-engineered-prototyping"
-license: MIT
 abstract: >-
-  A 60-minute hands-on workshop introducing students to Vibe Coding,
-  a practical method for designing AI interactions that preserve
-  cultural, emotional, and experiential context. Covers the VIBE Loop
-  (Value, Intent, Boundaries, Expression), rapid prototyping techniques,
-  and essential considerations for security and responsible AI.
+  A workshop introducing Vibe Coding, a method for designing AI interactions
+  that preserve cultural, emotional, and experiential context. Presents the
+  VIBE Loop (Value, Intent, Boundaries, Expression), context-engineered
+  prompting, rapid prototyping, and security and responsible-AI considerations
+  for building human-aligned AI systems. Presented at the UCF Institute of
+  Artificial Intelligence Workshop.
+type: software
+authors:
+  - given-names: Santos
+    family-names: Martinez
+    orcid: "https://orcid.org/0009-0001-5997-303X"
+    affiliation: "University of the Cumberlands; Microsoft"
+date-released: "2026-04-27"
+version: "1.0.0"
+license: MIT
+repository-code: "https://github.com/hanshisantos/vibe-coding-context-engineered-prototyping"
+url: "https://github.com/hanshisantos/vibe-coding-context-engineered-prototyping"
 keywords:
-  - vibe-coding
-  - context-engineering
-  - prompt-engineering
-  - responsible-ai
-  - workshop
-  - prototyping
+  - vibe coding
+  - VIBE Loop
+  - context engineering
+  - prompt engineering
+  - responsible AI
+  - human-AI interaction
+  - rapid prototyping

@@ -1,0 +1,23 @@
+{
+  "title": "Vibe Coding: A Practical Guide to Context-Engineered Prototyping",
+  "description": "A workshop introducing Vibe Coding, a method for designing AI interactions that preserve cultural, emotional, and experiential context. Presents the VIBE Loop (Value, Intent, Boundaries, Expression), context-engineered prompting, rapid prototyping, and security and responsible-AI considerations for building human-aligned AI systems. Presented at the UCF Institute of Artificial Intelligence Workshop.",
+  "upload_type": "lesson",
+  "creators": [
+    {
+      "name": "Martinez, Santos",
+      "orcid": "0009-0001-5997-303X",
+      "affiliation": "University of the Cumberlands; Microsoft"
+    }
+  ],
+  "keywords": [
+    "vibe coding",
+    "VIBE Loop",
+    "context engineering",
+    "prompt engineering",
+    "responsible AI",
+    "human-AI interaction",
+    "rapid prototyping"
+  ],
+  "license": "MIT",
+  "access_right": "open"
+}
